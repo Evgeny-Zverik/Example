@@ -8,32 +8,15 @@
 
 import Foundation
 
-public protocol ViewModelProtocol {
-    func nextPicture()
-    func setButton(title: String)
-}
 
 class ViewModel {
+    
     private var model: Model!
     private var view: ViewModelProtocol!
     private var core: NetworkCoreProtocol!
     private var networkServies: NetworkServies!
     
-
-
-    var images = [Data]()
-    var indexImage = 0
-    
-    //MARK: - Init
-    public init(view: ViewModelProtocol) {
-        self.view = view
-        self.model = Model(image: nil, like: false, index: 0)
-        core = NetworkCore()
-        self.networkServies = NetworkServies(core: core)
-        startInitial()
-    }
-    
-    //MARK: - Property get
+    //MARK: - Property
     public var startImage: String {
         return "image1"
     }
@@ -46,36 +29,42 @@ class ViewModel {
         return model.image!
     }
 
+    private var images = [Data]()
+    private var indexImage = 0
+    
+    
+    //MARK: - Init
+    public init(view: ViewModelProtocol) {
+        self.view = view
+        initModel()
+        initNetworkLayer()
+        startInitial()
+    }
+    
+    private func initModel() {
+        self.model = Model(image: nil, like: false, index: 0)
+    }
+    
+    private func initNetworkLayer() {
+        core = NetworkCore()
+        self.networkServies = NetworkServies(core: core)
+    }
+
     
     //MARK: - Load Image
-    public func startInitial() {
+    private func startInitial() {
         let imageGroup = DispatchGroup()
-        for i in 0...1 {
-            DispatchQueue.global().async(group: imageGroup) {
-                let url = SouceModel.imageURLs[i]
-                imageGroup.enter()
-                self.networkServies.downloadPhoto(userUrl: url) { [weak self] (data, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        return
-                    }
-                    self?.images.append(data!)
-                    imageGroup.leave()
-                }
-            }
-        }
         
-        for i in 2...3 {
+        for i in 0...3 {
+            let url = SouceModel.imageURLs[i]
             DispatchQueue.global().async(group: imageGroup) {
-                let url = SouceModel.imageURLs[i]
                 imageGroup.enter()
+                
                 self.networkServies.downloadPhoto(userUrl: url) { [weak self] (data, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        return
-                    }
+                    guard let self = self else {return}
+                    guard error == nil else {return}
                     
-                    self?.images.append(data!)
+                    self.images.append(data!)
                     imageGroup.leave()
                 }
             }
@@ -93,7 +82,7 @@ class ViewModel {
         view.setButton(title: likeTitle)
     }
     
-    func nextPicture() {
+    public func nextPicture() {
         while model.index != indexImage {
             model.image = self.images[indexImage]
             view.nextPicture()

@@ -18,6 +18,7 @@
 		848CFC072179FD7D00F88F6D /* NetworcServies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CFC062179FD7D00F88F6D /* NetworcServies.swift */; };
 		848CFC0A2179FDB400F88F6D /* NetworkCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CFC092179FDB400F88F6D /* NetworkCore.swift */; };
 		848CFC12217A049200F88F6D /* ExamplUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CFC11217A049200F88F6D /* ExamplUITests.swift */; };
+		84C97C9D219DA8E900B0943E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C97C9C219DA8E900B0943E /* ViewModelProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		848CFC0F217A049200F88F6D /* ExamplUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExamplUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		848CFC11217A049200F88F6D /* ExamplUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplUITests.swift; sourceTree = "<group>"; };
 		848CFC13217A049200F88F6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84C97C9C219DA8E900B0943E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				848CFBED2179C58900F88F6D /* AppDelegate.swift */,
+				84C97C9C219DA8E900B0943E /* ViewModelProtocol.swift */,
 				848CFC082179FD8500F88F6D /* NetworkServies */,
 				848CFC052179C64D00F88F6D /* Model */,
 				848CFC022179C5F900F88F6D /* ViewModel */,
@@ -244,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C97C9D219DA8E900B0943E /* ViewModelProtocol.swift in Sources */,
 				848CFBF02179C58900F88F6D /* ViewController.swift in Sources */,
 				848CFC0A2179FDB400F88F6D /* NetworkCore.swift in Sources */,
 				848CFC012179C5F200F88F6D /* ViewModel.swift in Sources */,

@@ -12,22 +12,23 @@ class ViewController: UIViewController {
     //MARK: - View
     private var viewModel: ViewModel!
     
-    private let imageView: UIImageView = {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    private lazy var imageView: UIImageView = {
+        let farame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let imageView = UIImageView(frame: farame)
         imageView.layer.borderWidth = 1.0
         imageView.contentMode = .scaleToFill
         imageView.layer.borderColor = UIColor.lightGray.cgColor
         return imageView
     }()
     
-    private let likeButton: UIButton = {
+    private lazy var likeButton: UIButton = {
         var button = UIButton(type: .system)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 32.0)
         button.setTitle("💛", for: .normal)
         return button
     }()
     
-    private let nextPictureButton: UIButton = {
+    private lazy var nextPictureButton: UIButton = {
         var button = UIButton(type: .system)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30.0)
         button.setTitle("Next", for: .normal)

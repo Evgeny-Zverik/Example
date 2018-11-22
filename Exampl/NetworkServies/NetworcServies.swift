@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum HttpMethod: String {
+    case get = "GET"
+    case post = "POST"
+}
+
 class NetworkServies {
     var core: NetworkCoreProtocol!
     
@@ -15,6 +20,10 @@ class NetworkServies {
         self.core = core
     }
     
+    
+}
+
+extension NetworkServies {
     /// Загрузка фото пользователя
     ///
     /// - Parameters:
@@ -22,10 +31,9 @@ class NetworkServies {
     ///   - queue: очередь для возврата, по умолчанию главная
     ///   - response: Метод обратного вызова с Data
     public func downloadPhoto(userUrl: String, queue: DispatchQueue = DispatchQueue.main, response: @escaping (Data?, Error?) -> ()) {
-        
         guard let url = URL(string: userUrl) else { return }
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        request.httpMethod = HttpMethod.get.rawValue
         
         core.send(request: request, queue: queue) { (data, error) in
             if let error = error {
