@@ -12,5 +12,11 @@ struct Model {
     var image: Data?
     var like: Bool
     var index: Int
+    
+    init(image: Data? = nil, like: Bool, index: Int) {
+        self.image = image
+        self.like = like
+        self.index = index
+    }
 }
 

@@ -11,25 +11,40 @@ import XCTest
 @testable import Exampl
 
 class ModelTest: XCTestCase {
-
+    
+    var model: Model!
+    let testUrl = "http://www.planetware.com/photos-large/F/france-paris-eiffel-tower.jpg"
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        model = Model(image: nil, like: true, index: 0)
     }
-
+    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        model = nil
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testInitLike() {
+        XCTAssertNotNil(model.like)
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testInitIndex() {
+        XCTAssertNotNil(model.index)
     }
-
+    
+    func testWhenGivenSetsLike() {
+        XCTAssertEqual(model.like, true)
+    }
+    
+    func testWhenGivenSetsIndex() {
+        XCTAssertEqual(model.index, 0)
+    }
+    
+    func testCheckSouceModel() {
+        XCTAssertNotNil(SouceModel.imageURLs.first)
+    }
+    
+    func testFirstUrlInSourceModel() {
+        XCTAssertEqual(SouceModel.imageURLs.first, testUrl)
+    }
+    
 }
