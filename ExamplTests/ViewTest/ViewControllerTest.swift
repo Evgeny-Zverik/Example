@@ -56,11 +56,4 @@ class ViewControllerTest: XCTestCase {
         
         XCTAssertTrue(action.contains("nextButtonAction"))
     }
-    
-    func textNextPicture() {
-        
-        
-        XCTAssertTrue(sut.nextPicture())
-    }
-
 }

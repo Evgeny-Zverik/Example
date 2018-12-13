@@ -10,7 +10,7 @@ import Foundation
 
 
 class ViewModel {
-    private var model: Model!
+    public var model: Model!
     private var view: ViewModelProtocol!
     private var core: NetworkCoreProtocol!
     private var networkServies: NetworkServies!
