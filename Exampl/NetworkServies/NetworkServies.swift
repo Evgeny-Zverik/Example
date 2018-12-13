@@ -19,8 +19,6 @@ class NetworkServies {
     public init(core: NetworkCoreProtocol) {
         self.core = core
     }
-    
-    
 }
 
 extension NetworkServies {

@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     //MARK: - View
     private var viewModel: ViewModel!
     
-    private lazy var imageView: UIImageView = {
+    public lazy var imageView: UIImageView = {
         let farame = CGRect(x: 0, y: 0, width: 100, height: 100)
         let imageView = UIImageView(frame: farame)
         imageView.layer.borderWidth = 1.0
@@ -21,14 +21,14 @@ class ViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var likeButton: UIButton = {
+    public lazy var likeButton: UIButton = {
         var button = UIButton(type: .system)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 32.0)
         button.setTitle("💛", for: .normal)
         return button
     }()
     
-    private lazy var nextPictureButton: UIButton = {
+    public lazy var nextPictureButton: UIButton = {
         var button = UIButton(type: .system)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30.0)
         button.setTitle("Next", for: .normal)
@@ -87,14 +87,14 @@ class ViewController: UIViewController {
     //MARK: - Action
     private func addActions() {
         likeButton.addTarget(self, action: #selector(self.onLikeAction), for: .touchUpInside)
-        nextPictureButton.addTarget(self, action: #selector(self.buttonAction), for: .touchUpInside)
+        nextPictureButton.addTarget(self, action: #selector(self.nextButtonAction), for: .touchUpInside)
     }
     
-    @objc private func buttonAction() {
+    @objc func nextButtonAction() {
         viewModel.nextPictureAction()
     }
     
-    @objc private func onLikeAction() {
+    @objc func onLikeAction() {
         viewModel.updateLike()
     }
     
