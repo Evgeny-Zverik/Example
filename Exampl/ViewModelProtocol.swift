@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol ViewModelProtocol {
+public protocol ViewModelProtocol: class {
     func nextPicture()
     func setButton(title: String)
 }

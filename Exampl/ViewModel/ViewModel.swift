@@ -10,9 +10,8 @@ import Foundation
 
 
 class ViewModel {
-    public var model: Model!
-    private var view: ViewModelProtocol!
-    private var core: NetworkCoreProtocol!
+    private var model: Model!
+    private weak var view: ViewModelProtocol!
     private var networkServies: NetworkServies!
     
     //MARK: - Property
@@ -45,8 +44,7 @@ class ViewModel {
     }
     
     private func initNetworkLayer() {
-        core = NetworkCore()
-        self.networkServies = NetworkServies(core: core)
+        self.networkServies = NetworkServies(core: NetworkCore())
     }
 
     
